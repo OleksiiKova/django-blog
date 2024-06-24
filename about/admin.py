@@ -2,9 +2,13 @@ from django.contrib import admin
 from .models import About, CollaborateRequest
 from django_summernote.admin import SummernoteModelAdmin
 
+
 # Register your models here.
 @admin.register(About)
 class AboutAdmin(SummernoteModelAdmin):
+    """
+    Adds rich-text editing of content in admin
+    """
     list_display = ('title', 'updated_on')
     search_fields = ['title', 'content']
     list_filter = ('updated_on',)
@@ -17,7 +21,10 @@ class AboutAdmin(SummernoteModelAdmin):
 #       own projects, then inherit from admin.ModelAdmin like
 #       we do below.
 
+
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
-
+    """
+    Lists message and read fields for display in admin
+    """
     list_display = ('message', 'read',)
